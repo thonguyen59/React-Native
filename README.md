@@ -1,3 +1,3 @@
 # Author  : Nguyễn Trường Thọ
-# UIT-Code: 22550022
+# UIT IE307
 # Cross-playform mobile programming exercises.
