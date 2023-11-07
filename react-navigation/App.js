@@ -1,22 +1,30 @@
-import { StatusBar } from 'expo-status-bar'
 import React, { useState } from 'react'
 import { StyleSheet, Text, Button, View, Image, ImageBackground, Switch } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
+import MyDrawer from "./draw/MyDrawer";
+
 
 const Stack = createNativeStackNavigator()
 
+// test
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Home' component={HomeScreen} options={{ title: 'Welcome' }} />
-        <Stack.Screen name='Profile' component={ProfileScreen} options={{ title: 'Profile' }} />
-        <Stack.Screen name='Studying' component={StudyingScreen} options={{ title: 'Study until die' }} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
+    return (
+        <NavigationContainer>
+           <MyDrawer/>
+        </NavigationContainer>
+
+    );
+
+  // return (
+  //   <NavigationContainer>
+  //     <Stack.Navigator>
+  //       <Stack.Screen name='Home' component={HomeScreen} options={{ title: 'Welcome' }} />
+  //       <Stack.Screen name='Profile' component={ProfileScreen} options={{ title: 'Profile' }} />
+  //       <Stack.Screen name='Studying' component={StudyingScreen} options={{ title: 'Study until die' }} />
+  //     </Stack.Navigator>
+  //   </NavigationContainer>
+  // )
 }
 
 const HomeScreen = ({ navigation }) => {
