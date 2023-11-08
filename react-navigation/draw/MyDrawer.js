@@ -1,7 +1,7 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from "../tab/HomeScreen";
 import FlowerDetail from "../pages/FlowerDetail";
-import LoginScreen from "../Buoi7/LoginScreen";
+import LoginScreen from "../Buoi8/LoginScreen";
 
 const Drawer = createDrawerNavigator();
 

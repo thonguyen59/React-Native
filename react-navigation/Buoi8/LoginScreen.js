@@ -5,7 +5,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 function LoginScreen() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [storage, setStorage] = useState("");
+    const [storageUsername, setStorageUsername] = useState("")
+    const [storagePassword, setStoragePassword] = useState("")
 
     const saveUserInfo = () => {
         if (username && password) {
@@ -22,12 +23,12 @@ function LoginScreen() {
     const getStorageValue = () => {
         AsyncStorage.getItem('username').then(
             (value) =>
-                setStorage("username: " + value)
+                setStorageUsername(value)
         )
 
         AsyncStorage.getItem('password').then(
             (value) =>
-                setStorage(storage + " - password: " + value)
+                setStoragePassword(value)
         )
     }
 
@@ -66,7 +67,7 @@ function LoginScreen() {
             <Text>Lấy thông tin</Text>
         </TouchableOpacity>
 
-        <Text>{getStorageValue}</Text>
+        <Text style={{textAlign:'center', paddingTop: 20}}>STORAGE: username: {storageUsername} - password: {storagePassword}</Text>
     </View>)
 
 }
@@ -104,7 +105,12 @@ const styles = StyleSheet.create({
         flexBasis: '70%',
     },
     buttonContainer: {
+        alignItems: 'center',
         marginTop: 20,
+        justifyContent: 'center',
+        paddingVertical: 12,
+        borderRadius: 4,
+        elevation: 2,
     },
 })
 

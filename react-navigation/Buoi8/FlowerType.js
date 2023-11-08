@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function FlowerType({navigation}) {
     const DATA = [
@@ -27,6 +28,27 @@ export default function FlowerType({navigation}) {
 
     const [flowerType, setFlowerType] = useState('')
 
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const getStorageValue = () => {
+        let info = ''
+        AsyncStorage.getItem("username").then(
+            (value) => {
+                setUsername(value)
+            }
+        )
+        AsyncStorage.getItem("password").then(
+            (value) => {
+                setPassword( value)
+            }
+        )
+    }
+
+    React.useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            getStorageValue();
+        })}, []);
+
     const Item = ({item, onPress, backgroundColor, textColor}) => (
         <TouchableOpacity
             onPress={onPress} style={[styles.item, {backgroundColor}]}>
@@ -53,6 +75,7 @@ export default function FlowerType({navigation}) {
             {/* flower type */}
 
             <View style={styles.containerFlowerType}>
+                <Text>Thông tin user: username: {username} - password: {password}</Text>
                 <Text style={styles.title}>Loại</Text>
                 <FlatList
                     data={DATA}

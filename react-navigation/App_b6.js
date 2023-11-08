@@ -1,8 +1,8 @@
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import FlowerType from "./Buoi7/FlowerType";
-import FlowerDetail from "./Buoi7/FlowerDetail";
-import FlowerList from "./Buoi7/FlowerList";
+import FlowerType from "./Buoi8/FlowerType";
+import FlowerDetail from "./Buoi8/FlowerDetail";
+import FlowerList from "./Buoi8/FlowerList";
 
 
 const Stack = createNativeStackNavigator()

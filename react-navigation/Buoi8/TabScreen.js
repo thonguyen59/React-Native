@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { Entypo } from '@expo/vector-icons';
-import LoginScreen from "../Buoi7/LoginScreen";
+import LoginScreen from ".//LoginScreen";
 import HomeScreen from "./HomeScreen";
 
 const Tab = createBottomTabNavigator()
