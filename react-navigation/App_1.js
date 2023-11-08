@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, Button, View, Image, ImageBackground, Switch } from 'react-native'
+import { Text, Button, View, Image, ImageBackground, Switch } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import MyDrawer from "./draw/MyDrawer";
@@ -8,12 +8,11 @@ import MyDrawer from "./draw/MyDrawer";
 const Stack = createNativeStackNavigator()
 
 // test
-export default function App() {
+export default function App_1() {
     return (
         <NavigationContainer>
            <MyDrawer/>
         </NavigationContainer>
-
     );
 
   // return (

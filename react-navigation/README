@@ -16,3 +16,8 @@ babel.config.js:
     plugins: [
         'react-native-reanimated./plugin'
     ]
+
+
+npm install @react-native-async-storage/async-storage --save
+
+npx expo install expo-sqlite

@@ -1,22 +1,30 @@
 import React from 'react';
-import HomeScreen from './HomeScreen';
-import LoginScreen from './HomeScreen';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { Entypo } from '@expo/vector-icons';
+import LoginScreen from "../Buoi7/LoginScreen";
+import HomeScreen from "./HomeScreen";
 
 const Tab = createBottomTabNavigator()
 
 function TabScreen() {
-  return (
-      <Tab.Navigator initialRouteName="FlowerType">
-        <Tab.Screen name="Home" component={HomeScreen}
-                    options={{tabBarLabel: 'Home',
-                    tabBarIcon: () => (
-                        <Ionicons name={"home-sharp"} size={24} color={"red"} />
-                    )}}/>
-        <Tab.Screen name="Login" component={LoginScreen()}/>
-      </Tab.Navigator>
-  );
+    return (
+        <Tab.Navigator>
+            <Tab.Screen name='Home' component={HomeScreen}
+                        options={{
+                            headerShown: false,
+                            tabBarLabel: 'Home',
+                            tabBarIcon: () => (<Entypo name="home" size={24} color="black"/>)
+                        }}/>
+
+            <Tab.Screen name='Login' component={LoginScreen}
+                        options={{
+                            headerShown: false,
+                            tabBarLabel: 'Login',
+                            tabBarIcon: () => (<Entypo name="login" size={24} color="black"/>)
+                        }}
+            />
+        </Tab.Navigator>
+    )
 }
 
 export default TabScreen;

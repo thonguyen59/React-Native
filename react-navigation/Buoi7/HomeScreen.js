@@ -7,9 +7,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
-function LoginScreen() {
+function HomeScreen() {
   return (
-      <NavigationContainer>
+
         <Stack.Navigator initialRouteName={FlowerType}>
           <Stack.Screen name="FlowerType" component={FlowerType}
                         options={{
@@ -21,7 +21,7 @@ function LoginScreen() {
           <Stack.Screen name="FlowerList" component={FlowerList} options={{title: 'Danh sách hoa'}}/>
           <Stack.Screen name="FlowerDetail" component={FlowerDetail} options={{title: 'Chi tiết hoa'}}/>
         </Stack.Navigator>
-      </NavigationContainer>);
+    );
 }
 
-export default LoginScreen;
+export default HomeScreen;

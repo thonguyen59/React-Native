@@ -1,7 +1,6 @@
-
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Alert, TouchableOpacity, Image, Modal, Pressable } from 'react-native';
+import React, {useState} from 'react';
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function FlowerType({navigation}) {
     const DATA = [
@@ -26,25 +25,46 @@ export default function FlowerType({navigation}) {
             "hinh": require('../image/xuan_1.jpg')
         }
     ];
+    const [flowerType, setFlowerType] = useState('')
 
-    const [flowerType,setFlowerType] = useState('')
-    const Item = ({item,onPress,backgroundColor,textColor}) =>(
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const getStorageValue = () => {
+        let info = ''
+        AsyncStorage.getItem("username").then(
+            (value) => {
+                setUsername(value)
+            }
+        )
+        AsyncStorage.getItem("password").then(
+            (value) => {
+                setPassword( value)
+            }
+        )
+    }
+
+    React.useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            getStorageValue();
+        })}, []);
+
+    const Item = ({item, onPress, backgroundColor, textColor}) => (
         <TouchableOpacity
-            onPress={onPress} style={[styles.item,{backgroundColor}]}>
+            onPress={onPress} style={[styles.item, {backgroundColor}]}>
 
-            <Text style={[styles.label,{color:textColor}]}>{item.tenloai}</Text>
+            <Text style={[styles.label, {color: textColor}]}>{item.tenloai}</Text>
 
         </TouchableOpacity>
 
     );
-    const renderItem = ({item})=>{
-        const backgroundColor  = item.maloai == flowerType?'#6e3b6e':'#f9c2ff'
-        const color  =item.maloai == flowerType?'white':'black'
+    const renderItem = ({item}) => {
+        const backgroundColor = item.maloai == flowerType ? '#6e3b6e' : '#f9c2ff'
+        const color = item.maloai == flowerType ? 'white' : 'black'
         return (
             <Item
                 item={item}
-                onPress={()=>{
-                    navigation.navigate('FlowerList',{tenloai:item.tenloai});
+                onPress={() => {
+                    navigation.navigate('FlowerList', {tenloai: item.tenloai});
                 }}
                 backgroundColor={backgroundColor}
                 textColor={color}
@@ -55,13 +75,14 @@ export default function FlowerType({navigation}) {
     return (
         <View style={styles.container}>
             {/* flower type */}
-
             <View style={styles.containerFlowerType}>
+                <Text>Thông tin user: username: {username} - password: {password}</Text>
+
                 <Text style={styles.title}>Loại</Text>
                 <FlatList
                     data={DATA}
                     renderItem={renderItem}
-                    keyExtractor={item=>item.tenloai}
+                    keyExtractor={item => item.tenloai}
                     extraData={flowerType}
                 />
             </View>
@@ -104,25 +125,25 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 16,
-        alignSelf:'center'
+        alignSelf: 'center'
     },
     itemType: {
         backgroundColor: '#2196F3',
-        margin:20,
+        margin: 20,
         alignItems: "center",
-        borderRadius:5,
-        width:120,
+        borderRadius: 5,
+        width: 120,
     },
     item: {
-        backgroundColor:'#fff',
-        padding:20,
-        marginVertical:8,
-        marginHorizontal:16,
-        borderRadius:10,
+        backgroundColor: '#fff',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+        borderRadius: 10,
         shadowColor: '#000',
-        shadowRadius:3.84,
+        shadowRadius: 3.84,
         shadowOpacity: 0.25,
-        elevation:9,
+        elevation: 9,
     },
     centeredView: {
         flex: 1,
@@ -131,8 +152,8 @@ const styles = StyleSheet.create({
         marginTop: 22,
     },
     modalView: {
-        width:'90%',
-        height:'50%',
+        width: '90%',
+        height: '50%',
         margin: 20,
         backgroundColor: 'white',
         borderRadius: 20,
@@ -148,8 +169,8 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     button: {
-        marginTop:20,
-        width:80,
+        marginTop: 20,
+        width: 80,
         borderRadius: 20,
         padding: 10,
         elevation: 2,
