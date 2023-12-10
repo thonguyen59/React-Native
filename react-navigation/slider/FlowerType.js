@@ -40,7 +40,7 @@ export default function FlowerType({navigation}) {
             <Item
                 item={item}
                 onPress={() => {
-                    navigation.navigate('FlowerList', {tenloai: item.tenloai});
+                    navigation.navigate('FlowerList', {maloai: item.maloai});
                 }}
                 backgroundColor={backgroundColor}
                 textColor={color}
